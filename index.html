@@ -1,119 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="color-scheme" content="light">
-    <meta name="theme-color" content="#0f172a">
-
-    <title>ISC2 SSCP Practice Exam</title>
-    <meta name="description" content="ISC2 SSCP試験対策用の演習問題アプリ">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#071b2f">
+  <title>SSCP Practice Lab</title>
+  <meta name="description" content="ISC2 SSCP試験対策のための演習アプリ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="SSCP Practice Lab ホーム">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span><strong>SSCP</strong><small>Practice Lab</small></span>
+      </a>
 
-<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
-    <div id="app" class="min-h-screen md:flex">
+      <div class="mode-card">
+        <span class="mode-dot"></span>
+        <span><small>LEARNING MODE</small><strong>Domain Practice</strong></span>
+      </div>
 
-        <aside
-            id="sidebar"
-            class="sidebar w-full md:w-80 md:min-h-screen md:sticky md:top-0 flex-shrink-0"
-            aria-label="学習メニュー"
-        >
-            <div class="sidebar-inner">
-                <header class="brand">
-                    <div class="brand-icon" aria-hidden="true">
-                        <i data-lucide="shield-check"></i>
-                    </div>
-                    <div>
-                        <p class="brand-kicker">ISC2 SSCP</p>
-                        <h1 class="brand-title">Practice Exam</h1>
-                    </div>
-                </header>
+      <nav aria-label="ドメイン選択">
+        <p class="nav-label">DOMAINS</p>
+        <div id="category-list" class="category-list"></div>
+      </nav>
 
-                <div class="sidebar-summary">
-                    <div>
-                        <p class="sidebar-summary-label">Learning Mode</p>
-                        <p class="sidebar-summary-value">Domain Practice</p>
-                    </div>
-                    <i data-lucide="book-open-check" class="w-5 h-5"></i>
-                </div>
+      <div class="sidebar-tip">
+        <span class="tip-icon">◎</span>
+        <div><strong>試験の視点</strong><p>正しい対策ではなく、状況に対して最も適切な対策を選びます。</p></div>
+      </div>
+      <p class="disclaimer">Independent study tool<br>Not affiliated with ISC2</p>
+    </aside>
 
-                <nav class="mt-7" aria-label="ドメイン選択">
-                    <div class="section-heading">
-                        <span>ドメイン別学習</span>
-                        <span class="section-heading-line"></span>
-                    </div>
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SYSTEMS SECURITY CERTIFIED PRACTITIONER</p>
+          <h1>SSCP 演習問題</h1>
+          <p class="lead">シナリオを読み、セキュリティ実務者として最善の判断を選択してください。</p>
+        </div>
+        <div class="practice-badge"><span>●</span> PRACTICE</div>
+      </header>
 
-                    <div id="category-list" class="category-list"></div>
-                </nav>
-
-                <div class="sidebar-note">
-                    <div class="flex items-start gap-3">
-                        <i data-lucide="brain" class="w-5 h-5 flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <p class="font-semibold">Exam Focus</p>
-                            <p class="mt-1 text-sm leading-relaxed">
-                                BEST / FIRST / MOST を意識して、最も適切な判断を選びましょう。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <footer class="sidebar-footer">
-                    <span>SSCP Study Project</span>
-                    <span>2026</span>
-                </footer>
-            </div>
-        </aside>
-
-        <main class="main-area flex-1">
-            <div class="main-shell">
-                <header class="page-header">
-                    <div>
-                        <p class="page-eyebrow">Security Systems Certified Practitioner</p>
-                        <h2 class="page-title">SSCP 演習問題</h2>
-                        <p class="page-description">
-                            シナリオ問題を中心に、実務判断とISC2の考え方を確認します。
-                        </p>
-                    </div>
-
-                    <div class="page-badge">
-                        <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-                        <span>Practice</span>
-                    </div>
-                </header>
-
-                <section id="content-area" class="content-area" aria-live="polite">
-                    <div class="loading-card">
-                        <div class="loading-spinner" aria-hidden="true"></div>
-                        <div>
-                            <p class="font-semibold text-slate-700">問題データを読み込み中...</p>
-                            <p class="mt-1 text-sm text-slate-500">
-                                SSCP question bank is loading.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <footer class="main-footer">
-                    <p>
-                        This is an independent study tool and is not affiliated with or endorsed by ISC2.
-                    </p>
-                </footer>
-            </div>
-        </main>
-    </div>
-
-    <script src="app.js"></script>
-
-    <script
-        type="module"
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon='{"token":"a4febccbebe9462f8b9fb38b013bce0d"}'>
-    </script>
+      <section id="content-area" class="content-area" aria-live="polite">
+        <div class="loading-panel"><span class="spinner"></span><div><strong>問題を読み込んでいます</strong><p>しばらくお待ちください。</p></div></div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
