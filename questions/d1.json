@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "D1-001",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.1 Comply with codes of ethics",
+    "difficulty": 250,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "セキュリティ担当者は、重大な脆弱性が顧客システムに存在することを発見した。上司は契約更新への影響を懸念し、顧客には知らせず次回保守まで待つよう指示した。担当者が最も優先すべき対応はどれか。",
+    "options": [
+      "上司の指示に従い、次回保守まで報告を延期する",
+      "顧客との契約を守るため、脆弱性の詳細を公開フォーラムへ投稿する",
+      "組織の正式なエスカレーション手順を用い、公衆・顧客へのリスクが適切に扱われるようにする",
+      "自分の判断だけで顧客システムへ修正プログラムを適用する"
+    ],
+    "correctIndex": 2,
+    "rationale": "ISC2の倫理では、公衆・社会・インフラの保護が優先される。一方、権限を越えた勝手な変更や無責任な公開は適切でない。正式なエスカレーション経路を用いてリスクを扱うのが最も適切である。",
+    "explanation": "ISC2の倫理では、公衆・社会・インフラの保護が優先される。一方、権限を越えた勝手な変更や無責任な公開は適切でない。正式なエスカレーション経路を用いてリスクを扱うのが最も適切である。",
+    "hint": "倫理と組織手順の両方を満たす選択肢を選ぶ。"
+  },
+  {
+    "id": "D1-002",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.1 Comply with codes of ethics",
+    "difficulty": 220,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "ある管理者は、実務経験のないクラウドセキュリティ分野について『専門家として対応できる』と顧客へ説明するよう営業担当者から求められた。最も適切な行動はどれか。",
+    "options": [
+      "契約獲得を優先し、経験があるように説明する",
+      "自分の能力と経験を正確に伝え、必要なら適切な専門家の支援を求める",
+      "顧客が質問しない限り、経験不足について説明しない",
+      "営業担当者にすべての技術判断を任せる"
+    ],
+    "correctIndex": 1,
+    "rationale": "専門家は能力・経験を誠実に表明する必要がある。自身の能力を偽らず、必要に応じて適切な専門家を関与させることが倫理的である。",
+    "explanation": "専門家は能力・経験を誠実に表明する必要がある。自身の能力を偽らず、必要に応じて適切な専門家を関与させることが倫理的である。",
+    "hint": "『honestly』『responsibly』の観点で考える。"
+  },
+  {
+    "id": "D1-003",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.1 Comply with codes of ethics",
+    "difficulty": 280,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "セキュリティエンジニアは、同僚が監査証跡を削除して変更管理違反を隠している可能性に気付いた。証拠はまだ限定的である。最初に行うべきことはどれか。",
+    "options": [
+      "同僚の不正を全社員へ通知する",
+      "証拠が十分になるまで何もしない",
+      "組織の倫理・インシデント報告手順に従って、事実を適切な責任者へ報告する",
+      "同僚のアカウントを自分で無効化する"
+    ],
+    "correctIndex": 2,
+    "rationale": "疑いの段階で公に断定したり、権限なく処分したりするのは不適切である。観察した事実を正式な報告経路へ上げることが、責任ある対応である。",
+    "explanation": "疑いの段階で公に断定したり、権限なく処分したりするのは不適切である。観察した事実を正式な報告経路へ上げることが、責任ある対応である。",
+    "hint": "事実・権限・正式な報告経路を意識する。"
+  },
+  {
+    "id": "D1-004",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.1 Comply with codes of ethics",
+    "difficulty": 300,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "ある組織において、法的には許容されるが顧客に重大な不利益を与える可能性がある監視機能の導入が検討されている。セキュリティ実務者にとって最も適切である考慮はどれか。",
+    "options": [
+      "合法であれば倫理上の検討は不要である",
+      "技術的に実装可能であれば直ちに導入する",
+      "法令遵守に加え、組織の倫理規程と公衆・顧客への影響も評価する",
+      "競合他社が同様の機能を使っているかだけを確認する"
+    ],
+    "correctIndex": 2,
+    "rationale": "合法性と倫理性は同一ではない。SSCP実務者は法令だけでなく、組織倫理や顧客・社会への影響も考慮する必要がある。",
+    "explanation": "合法性と倫理性は同一ではない。SSCP実務者は法令だけでなく、組織倫理や顧客・社会への影響も考慮する必要がある。",
+    "hint": "『legal』だけでなく『ethical』も問われている。"
+  },
+  {
+    "id": "D1-005",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 230,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "病院の電子カルテ基盤では、災害時にも救急医が患者情報へアクセスできることが最優先要件として定義された。この要件が最も直接的に支援するセキュリティ目標はどれか。",
+    "options": [
+      "機密性",
+      "完全性",
+      "可用性",
+      "否認防止"
+    ],
+    "correctIndex": 2,
+    "rationale": "災害時にも必要な情報やサービスを利用可能に保つことは可用性（Availability）の要件である。",
+    "explanation": "災害時にも必要な情報やサービスを利用可能に保つことは可用性（Availability）の要件である。",
+    "hint": "『使える状態を維持する』に注目する。"
+  },
+  {
+    "id": "D1-006",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 260,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "給与システムで、承認済みの支給額が処理途中で変更されていないことを確認する必要がある。最も直接的に関係する原則はどれか。",
+    "options": [
+      "可用性",
+      "完全性",
+      "機密性",
+      "最小特権"
+    ],
+    "correctIndex": 1,
+    "rationale": "データが許可なく変更されていないことを保証するのは完全性（Integrity）である。",
+    "explanation": "データが許可なく変更されていないことを保証するのは完全性（Integrity）である。",
+    "hint": "『変更されていない』という表現を手掛かりにする。"
+  },
+  {
+    "id": "D1-007",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 270,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "ある企業では、重要な設定変更について『誰が、いつ、何を変更したか』を後から追跡できるようにしたい。最も直接的に強化すべき概念はどれか。",
+    "options": [
+      "アカウンタビリティ",
+      "可用性",
+      "機密性",
+      "冗長性"
+    ],
+    "correctIndex": 0,
+    "rationale": "操作主体とその行為を追跡できることはアカウンタビリティ（Accountability）の中心であり、個別IDと監査ログが重要になる。",
+    "explanation": "操作主体とその行為を追跡できることはアカウンタビリティ（Accountability）の中心であり、個別IDと監査ログが重要になる。",
+    "hint": "『誰が行ったかを追跡』できることを考える。"
+  },
+  {
+    "id": "D1-008",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 300,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "法務部は、電子契約を送信した担当者が後から『自分は送っていない』と主張できない仕組みを求めている。最も適切なセキュリティ特性はどれか。",
+    "options": [
+      "完全性",
+      "否認防止",
+      "可用性",
+      "職務分掌"
+    ],
+    "correctIndex": 1,
+    "rationale": "否認防止（Non-repudiation）は、実行した行為や送信を後から合理的に否定できないようにする。デジタル署名などが代表的な実装である。",
+    "explanation": "否認防止（Non-repudiation）は、実行した行為や送信を後から合理的に否定できないようにする。デジタル署名などが代表的な実装である。",
+    "hint": "『後から否定できない』がキーワード。"
+  },
+  {
+    "id": "D1-009",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 320,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "データベース管理者は、障害対応のために本番DBの設定変更権限を必要としている。しかし顧客の決済データを照会する業務上の必要はない。リスクを最も適切に低減するアクセス設計はどれか。",
+    "options": [
+      "管理者にDB全体へのフルアクセスを付与する",
+      "設定変更に必要な管理権限だけを付与し、決済データの閲覧権限は付与しない",
+      "決済データを閲覧できるが変更できない権限を付与する",
+      "通常ユーザーと同じ権限だけを付与する"
+    ],
+    "correctIndex": 1,
+    "rationale": "最小特権（Least Privilege）は業務遂行に必要な権限だけを与える。設定変更が必要でも、不要なデータ閲覧まで許可する必要はない。",
+    "explanation": "最小特権（Least Privilege）は業務遂行に必要な権限だけを与える。設定変更が必要でも、不要なデータ閲覧まで許可する必要はない。",
+    "hint": "『できること』を必要最小限に絞る。"
+  },
+  {
+    "id": "D1-010",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 330,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "開発チームでは、同じ担当者がコードを作成し、レビューし、本番へデプロイできる。MFAは既に導入済みである。この状況に対する最も直接的な改善策はどれか。",
+    "options": [
+      "パスワードの最小長を延ばす",
+      "本番デプロイを別担当者の承認・実行に分離する",
+      "ログ保存期間を延長する",
+      "開発者端末へディスク暗号化を追加する"
+    ],
+    "correctIndex": 1,
+    "rationale": "問題は認証強度ではなく、一人で重要処理を完結できる点にある。職務分掌（Segregation of Duties）により開発・承認・本番反映を分離するのが最も直接的である。",
+    "explanation": "問題は認証強度ではなく、一人で重要処理を完結できる点にある。職務分掌（Segregation of Duties）により開発・承認・本番反映を分離するのが最も直接的である。",
+    "hint": "MFAがあっても職務分掌の欠如は解決しない。"
+  },
+  {
+    "id": "D1-011",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 310,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "ある財務アプリケーションでは、利用者の操作を共用アカウントで記録している。操作の正しさを確認するログは保存されている。この状態で最も不足しているセキュリティ特性はどれか。",
+    "options": [
+      "可用性",
+      "アカウンタビリティ",
+      "完全性",
+      "機密性"
+    ],
+    "correctIndex": 1,
+    "rationale": "共用アカウントでは、ログが存在しても個々の行為を特定の人物へ確実に帰属させにくい。個別IDなどによりアカウンタビリティを確保する必要がある。",
+    "explanation": "共用アカウントでは、ログが存在しても個々の行為を特定の人物へ確実に帰属させにくい。個別IDなどによりアカウンタビリティを確保する必要がある。",
+    "hint": "ログの有無だけでなく、行為主体を特定できるかを見る。"
+  },
+  {
+    "id": "D1-012",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 290,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "機密ファイルへのアクセス権を持つ社員のうち、特定案件を担当している者だけがそのファイルを閲覧できるようにしたい。最も関連する原則はどれか。",
+    "options": [
+      "Need-to-Know",
+      "Defense in Depth",
+      "Fail Secure",
+      "Due Diligence"
+    ],
+    "correctIndex": 0,
+    "rationale": "Need-to-Knowは、権限を持つ集団の中でも、その情報を業務上知る必要がある者だけにアクセスを限定する考え方である。",
+    "explanation": "Need-to-Knowは、権限を持つ集団の中でも、その情報を業務上知る必要がある者だけにアクセスを限定する考え方である。",
+    "hint": "『その情報を知る業務上の必要があるか』に注目する。"
+  },
+  {
+    "id": "D1-013",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.2 Understand security concepts",
+    "difficulty": 320,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "金融システムの高額送金では、一人の担当者だけでは処理を完了できず、二人の権限保持者の承認が必要である。この設計が最も直接的に実現しているものはどれか。",
+    "options": [
+      "ジョブローテーション",
+      "デュアルコントロール",
+      "最小特権",
+      "強制休暇"
+    ],
+    "correctIndex": 1,
+    "rationale": "二人以上の関与を必須にして単独で重要操作を完了できなくする仕組みはデュアルコントロールであり、職務分掌を強化する手段でもある。",
+    "explanation": "二人以上の関与を必須にして単独で重要操作を完了できなくする仕組みはデュアルコントロールであり、職務分掌を強化する手段でもある。",
+    "hint": "同時または複数人の承認が必要という点を見る。"
+  },
+  {
+    "id": "D1-014",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 280,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "監査で、従業員が離席時にPCをロックしないケースが多数確認された。最初に実施する管理策として最も適切なものはどれか。",
+    "options": [
+      "すべてのPCを交換する",
+      "自動スクリーンロックの基準を設定し、利用者教育と合わせて適用する",
+      "オフィスの出入口に監視カメラを追加する",
+      "インターネット接続を禁止する"
+    ],
+    "correctIndex": 1,
+    "rationale": "問題に直接対応するのは、自動ロックという技術的対策を標準化し、利用者への管理的対策も組み合わせること。過剰または無関係な対策よりリスクに対応した管理策を選ぶ。",
+    "explanation": "問題に直接対応するのは、自動ロックという技術的対策を標準化し、利用者への管理的対策も組み合わせること。過剰または無関係な対策よりリスクに対応した管理策を選ぶ。",
+    "hint": "原因に直接対応し、実装可能なコントロールを選ぶ。"
+  },
+  {
+    "id": "D1-015",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 300,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "重要サーバへ許可されていない接続が発生した場合、SOCがすぐ把握できるようにしたい。次のうち最も適切なコントロールはどれか。",
+    "options": [
+      "侵入検知システムとアラート",
+      "サーバ室の施錠",
+      "セキュリティポリシーの年次更新",
+      "バックアップの暗号化"
+    ],
+    "correctIndex": 0,
+    "rationale": "不審な接続を識別し通知する目的には、IDSなどの検知型技術コントロールが最も直接的である。",
+    "explanation": "不審な接続を識別し通知する目的には、IDSなどの検知型技術コントロールが最も直接的である。",
+    "hint": "『防ぐ』ではなく『発生を把握する』目的。"
+  },
+  {
+    "id": "D1-016",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 320,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "規制対象データを扱う新システムの導入前に、プロジェクトマネージャはセキュリティ製品を選定しようとしている。セキュリティ担当者が最初に確認すべきことはどれか。",
+    "options": [
+      "最も高価な製品を選ぶ",
+      "適用される法令・契約・組織ポリシーの要求事項を特定する",
+      "競合他社が使用している製品を調査する",
+      "利用者全員へ管理者権限を付与する"
+    ],
+    "correctIndex": 1,
+    "rationale": "コントロールは要求事項に基づいて選定する。まずコンプライアンス、契約、ポリシーなどの要件を特定し、その後に適切な技術・管理策を決める。",
+    "explanation": "コントロールは要求事項に基づいて選定する。まずコンプライアンス、契約、ポリシーなどの要件を特定し、その後に適切な技術・管理策を決める。",
+    "hint": "製品選定より要求事項の特定が先。"
+  },
+  {
+    "id": "D1-017",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 260,
+    "translationStyle": "A",
+    "questionType": "knowledge",
+    "question": "次のうち、管理的（Administrative）コントロールの例として最も適切なものはどれか。",
+    "options": [
+      "ファイアウォール",
+      "入退室用マントラップ",
+      "セキュリティ標準と手順",
+      "ディスク暗号化"
+    ],
+    "correctIndex": 2,
+    "rationale": "ポリシー、標準、手順、ベースラインなどは管理的コントロールに分類される。",
+    "explanation": "ポリシー、標準、手順、ベースラインなどは管理的コントロールに分類される。",
+    "hint": "人・ルール・プロセスを定めるものを探す。"
+  },
+  {
+    "id": "D1-018",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 290,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "データセンター入口で、許可証を持つ一人だけが認証後に通過し、後続者の共連れを防ぎたい。最も適切なコントロールはどれか。",
+    "options": [
+      "WAF",
+      "マントラップ",
+      "ACL",
+      "SIEM"
+    ],
+    "correctIndex": 1,
+    "rationale": "マントラップは二重扉などを利用して一度に一人ずつ認証し、共連れを抑止・防止する物理コントロールである。",
+    "explanation": "マントラップは二重扉などを利用して一度に一人ずつ認証し、共連れを抑止・防止する物理コントロールである。",
+    "hint": "物理アクセスとtailgating対策。"
+  },
+  {
+    "id": "D1-019",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 310,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "組織は新しい規制への準拠を宣言した。セキュリティ管理者がコントロールの実効性を継続的に確認するために最も重要な活動はどれか。",
+    "options": [
+      "一度だけチェックリストを完了する",
+      "定期的な監査とレビューを実施する",
+      "規制文書を利用者へメール送信する",
+      "監査ログを削除して保存容量を確保する"
+    ],
+    "correctIndex": 1,
+    "rationale": "準拠は一時点の活動ではなく継続的な状態であるため、定期的な監査・レビューによりコントロールの有効性と遵守状況を確認する必要がある。",
+    "explanation": "準拠は一時点の活動ではなく継続的な状態であるため、定期的な監査・レビューによりコントロールの有効性と遵守状況を確認する必要がある。",
+    "hint": "『継続的に確認』がポイント。"
+  },
+  {
+    "id": "D1-020",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 300,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "技術コントロールが規制要求を満たすものとして実装された。しかし半年後のレビューで、設定が初期状態へ戻っていた。最も適切である次のアクションはどれか。",
+    "options": [
+      "製品を直ちに廃棄する",
+      "設定を修正し、構成監視と定期レビューを強化する",
+      "規制対象データの利用を停止する",
+      "監査結果を無視する"
+    ],
+    "correctIndex": 1,
+    "rationale": "コントロールは導入後も維持される必要がある。設定を是正した上で、構成管理・監視・定期レビューにより再発を防ぐのが適切である。",
+    "explanation": "コントロールは導入後も維持される必要がある。設定を是正した上で、構成管理・監視・定期レビューにより再発を防ぐのが適切である。",
+    "hint": "『実装したら終わり』ではない。"
+  },
+  {
+    "id": "D1-021",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.3 Identify and implement security controls",
+    "difficulty": 330,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "企業は機密研究室への侵入リスクを低減したい。既にカード認証があるが、盗難カードによる侵入が懸念されている。最も効果的な追加策はどれか。",
+    "options": [
+      "カード認証を廃止し、入口を常時開放する",
+      "カードに加えてPINまたは生体認証を要求する",
+      "研究室内のPCの壁紙を変更する",
+      "研究資料のファイル名を変更する"
+    ],
+    "correctIndex": 1,
+    "rationale": "既存のカード認証に別要素を追加することで、盗難カードだけでは侵入できない多要素の物理アクセス制御となる。",
+    "explanation": "既存のカード認証に別要素を追加することで、盗難カードだけでは侵入できない多要素の物理アクセス制御となる。",
+    "hint": "単一の失敗点を減らす追加コントロールを考える。"
+  },
+  {
+    "id": "D1-022",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.4 Document and maintain functional security controls",
+    "difficulty": 260,
+    "translationStyle": "A",
+    "questionType": "knowledge",
+    "question": "攻撃者に対して『監視されている』ことを示し、攻撃を思いとどまらせる主目的のコントロールはどれか。",
+    "options": [
+      "Deterrent",
+      "Corrective",
+      "Compensating",
+      "Recovery"
+    ],
+    "correctIndex": 0,
+    "rationale": "Deterrent control（抑止的コントロール）は、攻撃の実行意思を低下させることを目的とする。警告表示や目立つ監視カメラなどが例である。",
+    "explanation": "Deterrent control（抑止的コントロール）は、攻撃の実行意思を低下させることを目的とする。警告表示や目立つ監視カメラなどが例である。",
+    "hint": "実際に止めるより『やめさせる』目的。"
+  },
+  {
+    "id": "D1-023",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.4 Document and maintain functional security controls",
+    "difficulty": 290,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "組織は既知のマルウェアが端末上で実行されることを防ぎたい。最も直接的な機能分類はどれか。",
+    "options": [
+      "Detective",
+      "Preventive",
+      "Corrective",
+      "Compensating"
+    ],
+    "correctIndex": 1,
+    "rationale": "実行前または実行時に脅威を阻止するコントロールはPreventive（予防的）である。",
+    "explanation": "実行前または実行時に脅威を阻止するコントロールはPreventive（予防的）である。",
+    "hint": "発見ではなく阻止。"
+  },
+  {
+    "id": "D1-024",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.4 Document and maintain functional security controls",
+    "difficulty": 300,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "EDRが不審なPowerShell実行を検出してSOCへ通知したが、自動隔離は実施しなかった。この機能は主としてどの種類のコントロールか。",
+    "options": [
+      "Preventive",
+      "Detective",
+      "Corrective",
+      "Deterrent"
+    ],
+    "correctIndex": 1,
+    "rationale": "不審活動を識別し通知する機能はDetective（検知的）コントロールである。隔離や修復が自動で行われていないため、主目的は検知となる。",
+    "explanation": "不審活動を識別し通知する機能はDetective（検知的）コントロールである。隔離や修復が自動で行われていないため、主目的は検知となる。",
+    "hint": "製品名ではなく、その機能が何をしているかで分類する。"
+  },
+  {
+    "id": "D1-025",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.4 Document and maintain functional security controls",
+    "difficulty": 320,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "レガシーシステムはMFAをサポートしていない。組織は更改までの6か月間、管理アクセスを専用ジャンプサーバ経由に限定し、強力なMFAとセッション記録をジャンプサーバ側で要求した。この対策は最も適切には何と分類されるか。",
+    "options": [
+      "Corrective control",
+      "Compensating control",
+      "Deterrent control",
+      "Recovery control"
+    ],
+    "correctIndex": 1,
+    "rationale": "本来望ましいMFAをレガシーシステムへ直接実装できないため、別の仕組みで同等のリスク低減を図っている。これは補完的（Compensating）コントロールである。",
+    "explanation": "本来望ましいMFAをレガシーシステムへ直接実装できないため、別の仕組みで同等のリスク低減を図っている。これは補完的（Compensating）コントロールである。",
+    "hint": "本来の対策を実装できない場合の代替策。"
+  },
+  {
+    "id": "D1-026",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.4 Document and maintain functional security controls",
+    "difficulty": 280,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "マルウェア感染が確認された端末を再イメージし、安全な状態へ戻す処置は機能的にどのコントロールへ最も近いか。",
+    "options": [
+      "Deterrent",
+      "Detective",
+      "Corrective",
+      "Preventive"
+    ],
+    "correctIndex": 2,
+    "rationale": "発生した問題を是正し、安全な状態へ戻すための対策はCorrective（是正的）コントロールである。",
+    "explanation": "発生した問題を是正し、安全な状態へ戻すための対策はCorrective（是正的）コントロールである。",
+    "hint": "発生後に『正常へ戻す』。"
+  },
+  {
+    "id": "D1-027",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.4 Document and maintain functional security controls",
+    "difficulty": 330,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "あるコントロールは攻撃を防止するよう設計されているが、運用文書には検知的コントロールとして記載されていた。SSCP実務者が最も適切に実施することはどれか。",
+    "options": [
+      "文書は変更せず運用を続ける",
+      "実際の機能と目的を確認し、コントロール文書を正しい分類へ更新する",
+      "コントロールを無効にする",
+      "分類はセキュリティに影響しないため無視する"
+    ],
+    "correctIndex": 1,
+    "rationale": "コントロールは実際の目的・機能と一致するよう正しく文書化され、維持される必要がある。誤分類は監査やギャップ分析を誤らせる。",
+    "explanation": "コントロールは実際の目的・機能と一致するよう正しく文書化され、維持される必要がある。誤分類は監査やギャップ分析を誤らせる。",
+    "hint": "『document and maintain』を意識する。"
+  },
+  {
+    "id": "D1-028",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 270,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "企業はクラウド移行プロジェクトを開始した。セキュリティチームが最初に行う資産管理活動として最も重要なものはどれか。",
+    "options": [
+      "すべての旧サーバを直ちに廃棄する",
+      "対象となるハードウェア、ソフトウェア、データ資産を識別し所有者を明確にする",
+      "全データを公開情報として再分類する",
+      "クラウド利用者へ管理者権限を付与する"
+    ],
+    "correctIndex": 1,
+    "rationale": "資産管理の出発点は、何を保有し、誰が責任を持つかを把握することである。識別できない資産は適切に保護・移行できない。",
+    "explanation": "資産管理の出発点は、何を保有し、誰が責任を持つかを把握することである。識別できない資産は適切に保護・移行できない。",
+    "hint": "『何を守るか』を先に把握する。"
+  },
+  {
+    "id": "D1-029",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 290,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "組織が利用するアプリケーションに多数のOSSライブラリが含まれている。重大なライブラリ脆弱性が公表された際、影響範囲を迅速に判断するため最も有用なものはどれか。",
+    "options": [
+      "SLA",
+      "SBOM",
+      "NDA",
+      "RTO"
+    ],
+    "correctIndex": 1,
+    "rationale": "SBOM（Software Bill of Materials）はソフトウェアを構成する部品・依存ライブラリを把握するため、脆弱なコンポーネントの影響特定に役立つ。",
+    "explanation": "SBOM（Software Bill of Materials）はソフトウェアを構成する部品・依存ライブラリを把握するため、脆弱なコンポーネントの影響特定に役立つ。",
+    "hint": "ソフトウェアの『部品表』。"
+  },
+  {
+    "id": "D1-030",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 300,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "サーバOSがベンダーのサポート終了（EOL）を迎えた。業務上すぐに更改できない場合、セキュリティ担当者が最も優先すべきことはどれか。",
+    "options": [
+      "リスクを記録し、移行計画と必要な補完的コントロールを実施する",
+      "何もせずそのまま利用する",
+      "監査ログを停止して負荷を下げる",
+      "サーバ名を変更する"
+    ],
+    "correctIndex": 0,
+    "rationale": "EOL製品はパッチ供給などが停止するためリスクが上がる。直ちに移行できない場合でも、リスクを正式に扱い、隔離やアクセス制限などの補完策と移行計画を用意する。",
+    "explanation": "EOL製品はパッチ供給などが停止するためリスクが上がる。直ちに移行できない場合でも、リスクを正式に扱い、隔離やアクセス制限などの補完策と移行計画を用意する。",
+    "hint": "『使い続ける/即停止』の二択ではなくリスク管理で考える。"
+  },
+  {
+    "id": "D1-031",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 280,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "退役するHDDに機密情報が保存されていた。媒体を組織外へ廃棄する予定で、再利用の必要はない。最も確実な処理はどれか。",
+    "options": [
+      "クイックフォーマット",
+      "ファイル削除",
+      "承認された物理破壊",
+      "パーティション変更"
+    ],
+    "correctIndex": 2,
+    "rationale": "再利用不要で機密性が高い媒体なら、承認済みの物理破壊はデータ復元リスクを最も確実に低減する。",
+    "explanation": "再利用不要で機密性が高い媒体なら、承認済みの物理破壊はデータ復元リスクを最も確実に低減する。",
+    "hint": "廃棄後の復元可能性を考える。"
+  },
+  {
+    "id": "D1-032",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 300,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "暗号化されたクラウドストレージから大量の機密データを迅速に廃棄する必要がある。基盤媒体を物理的に破壊できない場合、適切に設計されていることを前提として有効な方法はどれか。",
+    "options": [
+      "暗号鍵を不可逆に破棄する",
+      "ファイル名を変更する",
+      "アクセスログを削除する",
+      "画面表示を無効にする"
+    ],
+    "correctIndex": 0,
+    "rationale": "強力な暗号化が適切に実施されている場合、復号鍵を安全かつ不可逆に破棄する暗号的消去（crypto-erasure）はクラウド等で有効である。",
+    "explanation": "強力な暗号化が適切に実施されている場合、復号鍵を安全かつ不可逆に破棄する暗号的消去（crypto-erasure）はクラウド等で有効である。",
+    "hint": "データではなく復号可能性を消す方法。"
+  },
+  {
+    "id": "D1-033",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 290,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "法務部は、契約終了後も一部の記録を7年間保存する必要があると通知した。資産管理上最も適切な対応はどれか。",
+    "options": [
+      "すべての記録を永久保存する",
+      "法的・規制・業務要件を反映した保持および廃棄スケジュールを定義する",
+      "各利用者が自由に削除時期を決める",
+      "保存容量が不足するまで何もしない"
+    ],
+    "correctIndex": 1,
+    "rationale": "保持期間は法令、契約、規制、業務要件に基づいて管理し、期間終了後の適切な廃棄まで含めてライフサイクル化する必要がある。",
+    "explanation": "保持期間は法令、契約、規制、業務要件に基づいて管理し、期間終了後の適切な廃棄まで含めてライフサイクル化する必要がある。",
+    "hint": "Retentionは『長く保存すれば良い』ではない。"
+  },
+  {
+    "id": "D1-034",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 320,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "新規購入するセキュリティ製品について、調達部門は最安価格を重視している。SSCP実務者が取得前に最も確認すべきセキュリティ項目はどれか。",
+    "options": [
+      "製品の筐体色",
+      "セキュリティ要件、サポート期間、更新方式、および既存環境との適合性",
+      "営業担当者の役職",
+      "製品広告の閲覧数"
+    ],
+    "correctIndex": 1,
+    "rationale": "取得段階では、価格だけでなくセキュリティ要件、保守・EOL、更新能力、統合性などライフサイクル全体を評価する必要がある。",
+    "explanation": "取得段階では、価格だけでなくセキュリティ要件、保守・EOL、更新能力、統合性などライフサイクル全体を評価する必要がある。",
+    "hint": "購入時点からEOLまで見る。"
+  },
+  {
+    "id": "D1-035",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 300,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "資産台帳に登録されていないサーバが脆弱性スキャンで発見された。この状況に対する最も適切である最初のアクションはどれか。",
+    "options": [
+      "直ちに物理破壊する",
+      "所有者、業務目的、データ、構成を特定し、正式な資産管理対象へ組み込む",
+      "IPアドレスを変更してスキャンから見えなくする",
+      "台帳外資産なのでセキュリティチームの責任外とする"
+    ],
+    "correctIndex": 1,
+    "rationale": "未知・未管理資産は重大なリスクである。まず所有者と用途、データ、構成を把握して正式な管理対象へ入れ、その後にリスクに応じた是正を行う。",
+    "explanation": "未知・未管理資産は重大なリスクである。まず所有者と用途、データ、構成を把握して正式な管理対象へ入れ、その後にリスクに応じた是正を行う。",
+    "hint": "You cannot protect what you do not know."
+  },
+  {
+    "id": "D1-036",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.5 Asset management lifecycle",
+    "difficulty": 310,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "開発チームが本番データをテスト環境へコピーして利用したいと要望している。テスト環境は本番よりアクセス制御が弱い。最も適切な対応はどれか。",
+    "options": [
+      "本番データをそのままコピーする",
+      "可能な限り合成データを使用し、必要な場合は機密情報をマスキングまたは匿名化する",
+      "テスト環境のログを無効化する",
+      "全開発者へ本番DB管理者権限を付与する"
+    ],
+    "correctIndex": 1,
+    "rationale": "非本番環境へ実データを持ち込むと漏えいリスクが増える。合成データ、マスキング、匿名化などにより機密性を維持するのが適切である。",
+    "explanation": "非本番環境へ実データを持ち込むと漏えいリスクが増える。合成データ、マスキング、匿名化などにより機密性を維持するのが適切である。",
+    "hint": "テストの現実性とデータ保護の両方を満たす。"
+  },
+  {
+    "id": "D1-037",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 300,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "重大な脆弱性を修正する緊急パッチが公開された。インターネット公開システムが影響を受けている。最も適切な対応はどれか。",
+    "options": [
+      "緊急変更手順に従い、リスクを評価して可能な範囲でテストし、承認・記録・ロールバック計画を確保して適用する",
+      "変更管理を完全に無視して即時適用する",
+      "次回の四半期定例作業まで待つ",
+      "影響を確認せず全社端末へ一斉適用する"
+    ],
+    "correctIndex": 0,
+    "rationale": "緊急時でも変更管理そのものを捨てるべきではない。簡略化された緊急手順を利用し、評価・承認・記録・テスト・ロールバックを可能な範囲で確保する。",
+    "explanation": "緊急時でも変更管理そのものを捨てるべきではない。簡略化された緊急手順を利用し、評価・承認・記録・テスト・ロールバックを可能な範囲で確保する。",
+    "hint": "Emergency change ≠ no change management."
+  },
+  {
+    "id": "D1-038",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 320,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "アプリケーション変更が本番障害を引き起こした。変更申請には承認があったが、元の状態へ戻す手順がなかった。将来の変更管理で最も改善すべき点はどれか。",
+    "options": [
+      "変更要求を口頭だけにする",
+      "ロールバック計画と事前テストを必須にする",
+      "監査ログを短くする",
+      "変更担当者へ全権限を付与する"
+    ],
+    "correctIndex": 1,
+    "rationale": "変更に失敗した場合に安全な状態へ復帰できるロールバック計画は重要な変更管理要素である。事前テストと組み合わせることで影響を低減する。",
+    "explanation": "変更に失敗した場合に安全な状態へ復帰できるロールバック計画は重要な変更管理要素である。事前テストと組み合わせることで影響を低減する。",
+    "hint": "変更成功だけでなく失敗時も設計する。"
+  },
+  {
+    "id": "D1-039",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 310,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "機械学習を利用する不正検知モデルが更新された後、誤検知率が急増した。セキュリティ担当者が最初に確認すべきことはどれか。",
+    "options": [
+      "更新が承認・テストされた変更であり、モデル・設定・データの変更内容と影響評価が記録されているか",
+      "全ログを削除する",
+      "AIを利用するすべてのシステムを永久停止する",
+      "モデルの名称だけ変更する"
+    ],
+    "correctIndex": 0,
+    "rationale": "AI/MLモデルも運用資産であり、更新は変更管理対象となる。まず何が変更され、どうテスト・承認され、どの影響が想定されたかを確認する。",
+    "explanation": "AI/MLモデルも運用資産であり、更新は変更管理対象となる。まず何が変更され、どうテスト・承認され、どの影響が想定されたかを確認する。",
+    "hint": "AIでも基本は変更管理・完全性・説明責任。"
+  },
+  {
+    "id": "D1-040",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 290,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "セキュリティベースラインからサーバ設定が徐々に逸脱していることが確認された。最も直接的に改善すべきプロセスはどれか。",
+    "options": [
+      "構成管理",
+      "採用管理",
+      "広報管理",
+      "契約更新"
+    ],
+    "correctIndex": 0,
+    "rationale": "構成管理（Configuration Management）は承認されたベースラインを維持し、設定ドリフトを把握・是正するためのプロセスである。",
+    "explanation": "構成管理（Configuration Management）は承認されたベースラインを維持し、設定ドリフトを把握・是正するためのプロセスである。",
+    "hint": "Baselineからのdriftに注目する。"
+  },
+  {
+    "id": "D1-041",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 330,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "ネットワーク変更について、技術チームは『通信できること』だけをテストして本番反映しようとしている。セキュリティ担当者が追加で最も要求すべきことはどれか。",
+    "options": [
+      "セキュリティ影響分析を行い、アクセス制御・ログ・既存保護策への影響を評価する",
+      "変更作業を文書化しない",
+      "すべてのファイアウォールルールを一時的に許可する",
+      "利用者へ管理者権限を与える"
+    ],
+    "correctIndex": 0,
+    "rationale": "機能テストだけでは不十分であり、変更がセキュリティコントロール、アクセス経路、ログ、コンプライアンスへ与える影響を評価する必要がある。",
+    "explanation": "機能テストだけでは不十分であり、変更がセキュリティコントロール、アクセス経路、ログ、コンプライアンスへ与える影響を評価する必要がある。",
+    "hint": "Change managementにはsecurity impact analysisが含まれる。"
+  },
+  {
+    "id": "D1-042",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 300,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "構成変更が承認されて実装された。しかし変更記録は更新されていない。最も大きい運用上の問題はどれか。",
+    "options": [
+      "現在の構成状態を正確に把握できず、監査・トラブルシューティング・復旧が困難になる",
+      "必ずマルウェア感染が発生する",
+      "CPU性能が必ず低下する",
+      "すべての暗号鍵が失効する"
+    ],
+    "correctIndex": 0,
+    "rationale": "構成管理では実際の状態と記録を一致させることが重要である。不一致は監査、障害解析、セキュリティ評価、復旧を困難にする。",
+    "explanation": "構成管理では実際の状態と記録を一致させることが重要である。不一致は監査、障害解析、セキュリティ評価、復旧を困難にする。",
+    "hint": "文書化も変更ライフサイクルの一部。"
+  },
+  {
+    "id": "D1-043",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.6 Change management lifecycle",
+    "difficulty": 320,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "管理者が本番ファイアウォールのルールを業務部門からの電話依頼だけで変更した。結果として不要なインターネット公開が発生した。再発防止に最も効果的な対策はどれか。",
+    "options": [
+      "正式な変更要求、影響評価、承認、テスト、記録を要求する",
+      "管理者のPCを毎日再起動する",
+      "ファイアウォールのホスト名を変更する",
+      "すべての通信を恒久的に許可する"
+    ],
+    "correctIndex": 0,
+    "rationale": "問題の根本は非公式な変更であり、正式な変更管理プロセスにより要求・評価・承認・テスト・記録を統制する必要がある。",
+    "explanation": "問題の根本は非公式な変更であり、正式な変更管理プロセスにより要求・評価・承認・テスト・記録を統制する必要がある。",
+    "hint": "技術よりプロセスの欠陥を直す。"
+  },
+  {
+    "id": "D1-044",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.7 Security awareness and training",
+    "difficulty": 280,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "全社員が年次フィッシング研修を受講したが、模擬フィッシングのクリック率が改善していない。次に行うべき最も適切な対応はどれか。",
+    "options": [
+      "受講率100%なので対策を終了する",
+      "模擬訓練結果を分析し、リスクの高いグループへ役割別・反復型の教育を行う",
+      "メールを全面禁止する",
+      "すべての利用者を解雇する"
+    ],
+    "correctIndex": 1,
+    "rationale": "研修の目的は受講完了ではなく行動改善である。メトリクスを用いて弱点を特定し、対象別・継続的なトレーニングへ改善する。",
+    "explanation": "研修の目的は受講完了ではなく行動改善である。メトリクスを用いて弱点を特定し、対象別・継続的なトレーニングへ改善する。",
+    "hint": "Completion rateよりbehavior change。"
+  },
+  {
+    "id": "D1-045",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.7 Security awareness and training",
+    "difficulty": 310,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "経理部を狙ったBEC（Business Email Compromise）が増加している。最も効果的な意識向上施策はどれか。",
+    "options": [
+      "全社員へ一般的な長時間講義を年1回だけ実施する",
+      "経理・承認担当者向けに送金依頼の検証手順を含むシナリオ型訓練を実施する",
+      "セキュリティポスターだけを掲示する",
+      "すべての外部メールを自動削除する"
+    ],
+    "correctIndex": 1,
+    "rationale": "脅威と職務に合わせた役割別トレーニングは、一般的な一律研修より実務上の行動改善につながりやすい。",
+    "explanation": "脅威と職務に合わせた役割別トレーニングは、一般的な一律研修より実務上の行動改善につながりやすい。",
+    "hint": "対象者・脅威・業務プロセスを合わせる。"
+  },
+  {
+    "id": "D1-046",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.7 Security awareness and training",
+    "difficulty": 300,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "ランサムウェア発生を想定し、技術チーム、法務、広報、経営層が会議形式で役割と判断を確認する活動として最も適切であるものはどれか。",
+    "options": [
+      "脆弱性スキャン",
+      "テーブルトップ演習",
+      "ペネトレーションテスト",
+      "コードレビュー"
+    ],
+    "correctIndex": 1,
+    "rationale": "テーブルトップ演習は実システムを停止せず、シナリオに沿って関係者の役割、連絡、意思決定、手順を確認する訓練である。",
+    "explanation": "テーブルトップ演習は実システムを停止せず、シナリオに沿って関係者の役割、連絡、意思決定、手順を確認する訓練である。",
+    "hint": "会議形式でシナリオ対応を確認する演習。"
+  },
+  {
+    "id": "D1-047",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.7 Security awareness and training",
+    "difficulty": 290,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "新入社員のセキュリティ教育を設計する際、最も適切なアプローチはどれか。",
+    "options": [
+      "入社時に一度だけ実施する",
+      "入社時教育に加えて、定期的な更新、役割別教育、脅威に応じた注意喚起を継続する",
+      "IT部門だけに教育する",
+      "ポリシー文書へのリンクだけ送る"
+    ],
+    "correctIndex": 1,
+    "rationale": "セキュリティ意識向上は継続的なプログラムであり、入社時だけでなく役割や脅威の変化に合わせて更新する必要がある。",
+    "explanation": "セキュリティ意識向上は継続的なプログラムであり、入社時だけでなく役割や脅威の変化に合わせて更新する必要がある。",
+    "hint": "Awarenessはイベントではなく継続プロセス。"
+  },
+  {
+    "id": "D1-048",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.8 Collaborate with physical security operations",
+    "difficulty": 300,
+    "translationStyle": "A",
+    "questionType": "scenario",
+    "question": "外部保守員がデータセンターで作業する必要がある。最も適切な物理セキュリティ手順はどれか。",
+    "options": [
+      "保守員へ恒久的な無制限バッジを発行する",
+      "本人確認、作業承認、必要範囲だけの一時アクセス、入退室記録、および必要に応じたエスコートを実施する",
+      "業者であれば受付手続きを免除する",
+      "社員のバッジを貸与する"
+    ],
+    "correctIndex": 1,
+    "rationale": "第三者訪問者には本人確認、事前承認、最小限のアクセス、記録、エスコートなどの訪問者管理が必要である。",
+    "explanation": "第三者訪問者には本人確認、事前承認、最小限のアクセス、記録、エスコートなどの訪問者管理が必要である。",
+    "hint": "Visitor managementにもleast privilegeを適用する。"
+  },
+  {
+    "id": "D1-049",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.8 Collaborate with physical security operations",
+    "difficulty": 320,
+    "translationStyle": "B",
+    "questionType": "scenario",
+    "question": "機密研究エリアへの個人スマートフォン持ち込みが情報漏えいリスクとして評価された。最も適切な対策はどれか。",
+    "options": [
+      "従業員の自主判断に任せる",
+      "リスクと業務要件に基づく持込制限ポリシーを定め、保管設備と入退室時の運用を実施する",
+      "スマートフォンの壁紙を指定する",
+      "研究データをすべて公開する"
+    ],
+    "correctIndex": 1,
+    "rationale": "個人デバイス制限は物理セキュリティ運用と情報保護の両面で実施する。ポリシーだけでなく、ロッカー等の実装と運用も必要である。",
+    "explanation": "個人デバイス制限は物理セキュリティ運用と情報保護の両面で実施する。ポリシーだけでなく、ロッカー等の実装と運用も必要である。",
+    "hint": "Policy + physical enforcementで考える。"
+  },
+  {
+    "id": "D1-050",
+    "domain": "D1",
+    "domainLabel": "D1: セキュリティの概念と実践",
+    "objective": "1.8 Collaborate with physical security operations",
+    "difficulty": 330,
+    "translationStyle": "C",
+    "questionType": "scenario",
+    "question": "データセンターの施設評価において、サーバラックは強固に施錠されているが、入室者の記録がなく、来訪者は社員と一緒であれば自由に入れる。最も優先して改善するべきものはどれか。",
+    "options": [
+      "ラックの色を統一する",
+      "バッジ認証、訪問者登録、共連れ防止を含む施設アクセス管理を強化する",
+      "サーバのCPUを更新する",
+      "ラック内のネットワークケーブルを短くする"
+    ],
+    "correctIndex": 1,
+    "rationale": "ラック単体が保護されていても施設へのアクセス統制が弱ければ不正接近が可能である。バッジ、訪問者管理、共連れ対策を含む多層の物理アクセス管理が必要である。",
+    "explanation": "ラック単体が保護されていても施設へのアクセス統制が弱ければ不正接近が可能である。バッジ、訪問者管理、共連れ対策を含む多層の物理アクセス管理が必要である。",
+    "hint": "局所的な対策より、施設アクセス全体の弱点を優先する。"
+  }
+]
