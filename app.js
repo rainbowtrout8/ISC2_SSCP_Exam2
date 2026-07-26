@@ -1,371 +1,179 @@
 (() => {
-  "use strict";
+  'use strict';
 
-  const QUESTION_FILES = {
-    D1: "questions/d1.json",
-    D2: "questions/d2.json",
-    D3: "questions/d3.json",
-    D4: "questions/d4.json",
-    D5: "questions/d5.json",
-    D6: "questions/d6.json",
-    D7: "questions/d7.json"
+  const SETS = {
+    mockA: { label: 'Mock A', subtitle: '本番相当・100問', file: 'questions/mockA.json', time: 120 },
+    mockB: { label: 'Mock B', subtitle: '本番より難しめ・100問', file: 'questions/mockB.json', time: 120 },
+    challenge: { label: 'Challenge', subtitle: '難問・ひっかけ・30問', file: 'questions/challenge.json', time: 0 }
   };
 
-  const DOMAINS = {
-    D1: "セキュリティの概念と実践",
-    D2: "アクセス制御",
-    D3: "リスクの識別・監視・分析",
-    D4: "インシデント対応と復旧",
-    D5: "暗号化",
-    D6: "ネットワークと通信のセキュリティ",
-    D7: "システムとアプリケーションのセキュリティ"
+  const DOMAIN_NAMES = {
+    D1: 'Security Concepts and Practices', D2: 'Access Controls',
+    D3: 'Risk Identification, Monitoring and Analysis', D4: 'Incident Response and Recovery',
+    D5: 'Cryptography', D6: 'Network and Communications Security',
+    D7: 'Systems and Application Security'
   };
 
   const state = {
-    domain: "D1",
-    cache: {},
-    source: [],
-    questions: [],
-    answers: [],
-    index: 0,
-    finished: false
+    setKey: null, questions: [], index: 0, answers: [], flagged: [],
+    submitted: [], startedAt: null, deadline: null, timerId: null,
+    mode: 'home', loadError: null
   };
 
-  let categories;
-  let content;
+  const root = document.getElementById('app') || document.getElementById('content-area') || document.querySelector('main') || document.body;
 
-  document.addEventListener("DOMContentLoaded", init);
-
-  async function init() {
-    categories = document.querySelector("#category-list");
-    content = document.querySelector("#content-area");
-
-    if (!categories || !content) {
-      console.error("#category-list または #content-area が見つかりません。");
-      return;
-    }
-
-    renderCategories();
-    await loadDomain("D1");
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   }
 
-  function renderCategories() {
-    categories.replaceChildren();
-
-    Object.entries(DOMAINS).forEach(([code, name]) => {
-      const available = Boolean(QUESTION_FILES[code]);
-      const button = node("button", {
-        className: `category-button ${code === state.domain ? "active" : ""}`,
-        disabled: !available,
-        type: "button",
-        "aria-current": code === state.domain ? "page" : "false"
-      }, [
-        node("span", { className: "category-code", textContent: code }),
-        node("span", { textContent: name }),
-        !available ? node("span", { className: "soon", textContent: "Soon" }) : null
-      ]);
-
-      if (available) {
-        button.addEventListener("click", () => loadDomain(code));
-      }
-
-      categories.append(button);
-    });
+  function injectFallbackStyles() {
+    if (document.getElementById('sscp-app-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'sscp-app-styles';
+    style.textContent = `
+      :root{--navy:#082b4c;--blue:#0b5f8a;--cyan:#17a6b6;--ink:#172433;--muted:#657384;--line:#d9e2ea;--bg:#f3f6f8;--ok:#16845b;--bad:#c83e4d;--gold:#e9a23b}
+      *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
+      .sscp-shell{min-height:100vh}.sscp-header{background:linear-gradient(125deg,#061f38,#0a476d);color:#fff;padding:22px clamp(18px,4vw,52px);box-shadow:0 4px 16px #06213a35}
+      .sscp-brand{font-size:1.4rem;font-weight:800;letter-spacing:.02em}.sscp-brand span{color:#63d4db}.sscp-header-row,.sscp-toolbar,.sscp-actions,.sscp-meta,.sscp-result-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+      .sscp-header-row{justify-content:space-between}.sscp-main{width:min(1080px,calc(100% - 28px));margin:28px auto 60px}.sscp-home-copy{text-align:center;margin:40px auto 28px;max-width:720px}
+      .sscp-home-copy h1{color:var(--navy);font-size:clamp(1.8rem,4vw,3rem);margin:0 0 12px}.sscp-home-copy p{color:var(--muted);line-height:1.8}
+      .sscp-set-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.sscp-set-card,.sscp-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 26px #12314b12}
+      .sscp-set-card{padding:24px;cursor:pointer;text-align:left;transition:.18s transform,.18s box-shadow;border-top:5px solid var(--cyan)}.sscp-set-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #12314b24}.sscp-set-card h2{margin:0 0 5px;color:var(--navy)}
+      .sscp-set-card p{color:var(--muted);margin:0 0 18px}.sscp-pill{display:inline-flex;border-radius:999px;padding:5px 10px;background:#e7f5f7;color:#08727d;font-size:.8rem;font-weight:700}
+      .sscp-toolbar{justify-content:space-between;margin-bottom:14px}.sscp-progress-wrap{flex:1;min-width:220px}.sscp-progress{height:9px;background:#dce5eb;border-radius:99px;overflow:hidden}.sscp-progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .2s}
+      .sscp-stat{font-size:.88rem;color:var(--muted);margin-top:6px}.sscp-timer{font-variant-numeric:tabular-nums;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:10px}.sscp-timer.warn{color:#a53b22;border-color:#e9a28f}
+      .sscp-card{overflow:hidden}.sscp-question-head{background:linear-gradient(125deg,var(--navy),#0a4d70);color:#fff;padding:24px clamp(18px,4vw,38px)}.sscp-meta{font-size:.78rem;opacity:.92;margin-bottom:14px}.sscp-meta span{border:1px solid #ffffff45;border-radius:999px;padding:4px 9px}
+      .sscp-question{font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.8;font-weight:650;margin:0}.sscp-body{padding:clamp(18px,4vw,36px)}.sscp-options{display:grid;gap:12px}
+      .sscp-option{width:100%;display:grid;grid-template-columns:42px 1fr;align-items:center;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:13px 15px;color:var(--ink);cursor:pointer;font:inherit;line-height:1.55;transition:.15s}.sscp-option:hover:not(:disabled){border-color:#78aebf;background:#f7fcfd}.sscp-option.selected{border-color:var(--blue);background:#eaf5fa}.sscp-option.correct{border-color:var(--ok);background:#ebf8f1}.sscp-option.incorrect{border-color:var(--bad);background:#fff0f1}.sscp-option:disabled{cursor:default}.sscp-letter{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#e8eef2;color:var(--navy);font-weight:800}.selected .sscp-letter{background:var(--blue);color:#fff}.correct .sscp-letter{background:var(--ok);color:#fff}.incorrect .sscp-letter{background:var(--bad);color:#fff}
+      .sscp-feedback{margin-top:22px;border-radius:12px;padding:18px 20px;border-left:5px solid}.sscp-feedback.ok{background:#edf8f3;border-color:var(--ok)}.sscp-feedback.bad{background:#fff1f2;border-color:var(--bad)}.sscp-feedback h3{margin:0 0 8px}.sscp-feedback p{line-height:1.75;margin:7px 0}.sscp-hint{font-size:.9rem;color:var(--muted)}
+      .sscp-actions{justify-content:space-between;margin-top:22px}.sscp-actions-left,.sscp-actions-right{display:flex;gap:10px;flex-wrap:wrap}.sscp-btn{border:0;border-radius:10px;padding:11px 18px;font:inherit;font-weight:750;cursor:pointer}.sscp-btn:disabled{opacity:.42;cursor:not-allowed}.sscp-btn-primary{background:var(--blue);color:#fff}.sscp-btn-primary:hover:not(:disabled){background:#084d71}.sscp-btn-secondary{background:#e7edf1;color:var(--navy)}.sscp-btn-flag{background:#fff4dd;color:#8b5700;border:1px solid #f1ce8c}.sscp-btn-flag.active{background:var(--gold);color:#332000}
+      .sscp-result{padding:clamp(22px,5vw,48px);text-align:center}.sscp-score{font-size:clamp(3rem,9vw,6rem);font-weight:850;color:var(--navy);line-height:1}.sscp-score small{font-size:.28em;color:var(--muted)}.sscp-result h1{color:var(--navy)}.sscp-result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:28px 0;text-align:left}.sscp-result-item{background:#f5f8fa;border:1px solid var(--line);padding:15px;border-radius:10px}.sscp-result-item strong{display:block;font-size:1.4rem;color:var(--navy)}
+      .sscp-review-list{margin-top:24px;text-align:left}.sscp-review-row{border:1px solid var(--line);border-radius:10px;margin:9px 0;padding:13px;background:#fff;cursor:pointer}.sscp-review-row.bad{border-left:5px solid var(--bad)}.sscp-review-row.ok{border-left:5px solid var(--ok)}.sscp-error{background:#fff1f2;border:1px solid #efaab1;color:#8d2630;padding:18px;border-radius:12px;line-height:1.7}
+      @media(max-width:620px){.sscp-header{padding:16px}.sscp-main{width:min(100% - 18px,1080px);margin-top:16px}.sscp-question-head{padding:19px 17px}.sscp-body{padding:16px}.sscp-option{grid-template-columns:36px 1fr;padding:11px}.sscp-actions{align-items:stretch}.sscp-actions-left,.sscp-actions-right{width:100%}.sscp-actions-right .sscp-btn{flex:1}}
+    `;
+    document.head.appendChild(style);
   }
 
-  async function loadDomain(domain) {
-    if (!QUESTION_FILES[domain]) return;
-
-    state.domain = domain;
-    renderCategories();
-    renderStatus(`${domain}の問題を読み込んでいます`, "しばらくお待ちください。");
-
+  async function loadSet(key) {
+    const config = SETS[key];
+    if (!config) return;
+    clearTimer();
+    state.loadError = null;
+    root.innerHTML = shell('<div class="sscp-card sscp-result"><h2>問題を読み込んでいます…</h2></div>');
     try {
-      if (!state.cache[domain]) {
-        const response = await fetch(QUESTION_FILES[domain], { cache: "no-store" });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-        const data = await response.json();
-        if (!Array.isArray(data)) throw new Error("問題データの形式が正しくありません。");
-
-        const valid = data.filter(isValidQuestion).slice(0, 50);
-        if (!valid.length) throw new Error("有効な問題がありません。");
-        state.cache[domain] = clone(valid);
-      }
-
-      state.source = clone(state.cache[domain]);
-      start(state.source);
+      const response = await fetch(config.file, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`${config.file} を読み込めませんでした（HTTP ${response.status}）`);
+      const data = await response.json();
+      validateQuestions(data, config.file);
+      state.setKey = key; state.questions = data; state.index = 0;
+      state.answers = Array(data.length).fill(null); state.flagged = Array(data.length).fill(false);
+      state.submitted = Array(data.length).fill(false); state.startedAt = Date.now();
+      state.deadline = config.time ? state.startedAt + config.time * 60_000 : null;
+      state.mode = 'quiz';
+      if (state.deadline) state.timerId = window.setInterval(updateTimer, 1000);
+      renderQuiz();
     } catch (error) {
-      renderError(error, domain);
+      state.loadError = error.message; state.mode = 'home'; renderHome();
     }
   }
 
-  function isValidQuestion(question) {
-    return question
-      && typeof question.question === "string"
-      && Array.isArray(question.options)
-      && question.options.length === 4
-      && Number.isInteger(question.correctIndex)
-      && question.correctIndex >= 0
-      && question.correctIndex < 4;
-  }
-
-  function start(questions) {
-    state.questions = clone(questions);
-    state.answers = new Array(questions.length).fill(null);
-    state.index = 0;
-    state.finished = false;
-    render();
-  }
-
-  function render() {
-    if (state.finished) {
-      renderResults();
-      return;
-    }
-
-    const question = state.questions[state.index];
-    const selected = state.answers[state.index];
-    const answered = selected !== null;
-    const score = getStats();
-    const shell = node("div", { className: "quiz-shell" });
-
-    shell.append(node("div", { className: "session-bar" }, [
-      node("div", { className: "counter" }, [
-        document.createTextNode("QUESTION "),
-        node("b", { textContent: String(state.index + 1) }),
-        document.createTextNode(` / ${state.questions.length}`)
-      ]),
-      node("div", { className: "progress" }, [
-        node("div", {
-          className: "progress-fill",
-          style: `width:${state.questions.length ? (score.answered / state.questions.length) * 100 : 0}%`
-        })
-      ]),
-      node("div", {
-        className: "score-mini",
-        textContent: `回答 ${score.answered}　正解 ${score.correct}`
-      })
-    ]));
-
-    const card = node("article", { className: "question-card" });
-    const metadata = [
-      question.id || `${state.domain}-${String(state.index + 1).padStart(3, "0")}`,
-      question.objective || `Domain ${state.domain.slice(1)}`
-    ].filter(Boolean);
-
-    card.append(node("header", { className: "question-head" }, [
-      node("div", { className: "meta-row" }, metadata.map(text =>
-        node("span", { className: "meta-chip", textContent: text })
-      )),
-      node("h2", { className: "question-text", textContent: question.question })
-    ]));
-
-    const answerArea = node("div", { className: "answer-area" }, [
-      node("p", {
-        className: "answer-label",
-        textContent: "最も適切な回答を1つ選択してください"
-      })
-    ]);
-
-    const optionList = node("div", {
-      className: "options-list",
-      role: "group",
-      "aria-label": "選択肢"
-    });
-
-    question.options.forEach((text, index) => {
-      const icon = answered && index === question.correctIndex
-        ? "✓"
-        : answered && index === selected ? "×" : "";
-
-      const button = node("button", {
-        className: optionClass(index, selected, question.correctIndex),
-        type: "button",
-        disabled: answered
-      }, [
-        node("span", { className: "option-letter", textContent: String.fromCharCode(65 + index) }),
-        node("span", { textContent: text }),
-        node("span", { className: "state-icon", textContent: icon })
-      ]);
-
-      button.addEventListener("click", () => {
-        if (state.answers[state.index] === null) {
-          state.answers[state.index] = index;
-          render();
-        }
-      });
-      optionList.append(button);
-    });
-
-    answerArea.append(optionList);
-    if (answered) answerArea.append(buildFeedback(question, selected));
-    answerArea.append(buildNavigation());
-    card.append(answerArea);
-    shell.append(card);
-    content.replaceChildren(shell);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  function optionClass(index, selected, correct) {
-    if (selected === null) return "option-button";
-    if (index === correct) return "option-button correct";
-    if (index === selected) return "option-button incorrect";
-    return "option-button muted";
-  }
-
-  function buildFeedback(question, selected) {
-    const isCorrect = selected === question.correctIndex;
-    const feedback = node("section", {
-      className: `feedback ${isCorrect ? "is-correct" : "is-incorrect"}`
-    });
-
-    feedback.append(node("div", { className: "feedback-title" }, [
-      node("strong", { textContent: isCorrect ? "✓ 正解" : "× 不正解" }),
-      !isCorrect ? node("span", {
-        textContent: `正解は ${String.fromCharCode(65 + question.correctIndex)} です`
-      }) : null
-    ]));
-
-    const body = node("div", { className: "feedback-body" });
-    const explanation = typeof question.rationale === "string"
-      ? question.rationale
-      : typeof question.explanation === "string"
-        ? question.explanation
-        : question.explanation?.correct || "";
-
-    if (explanation) body.append(node("p", { textContent: explanation }));
-    if (question.hint) {
-      body.append(node("div", { className: "hint-box" }, [
-        node("strong", { textContent: "EXAM TIP　" }),
-        document.createTextNode(question.hint)
-      ]));
-    }
-    feedback.append(body);
-    return feedback;
-  }
-
-  function buildNavigation() {
-    const previous = node("button", {
-      className: "btn btn-secondary",
-      type: "button",
-      disabled: state.index === 0,
-      textContent: "← 前の問題"
-    });
-    previous.addEventListener("click", () => {
-      state.index -= 1;
-      render();
-    });
-
-    const isLast = state.index === state.questions.length - 1;
-    const next = node("button", {
-      className: "btn btn-primary",
-      type: "button",
-      textContent: isLast ? "結果を見る" : "次の問題 →"
-    });
-    next.addEventListener("click", () => {
-      if (isLast) state.finished = true;
-      else state.index += 1;
-      render();
-    });
-
-    return node("div", { className: "navigation" }, [previous, next]);
-  }
-
-  function renderResults() {
-    const score = getStats();
-    const percentage = state.questions.length
-      ? Math.round((score.correct / state.questions.length) * 100)
-      : 0;
-
-    const review = makeButton("回答を見直す", "btn btn-secondary", () => {
-      state.finished = false;
-      state.index = 0;
-      render();
-    });
-    const retry = makeButton("もう一度挑戦", "btn btn-secondary", () => start(state.source));
-    const shuffle = makeButton("シャッフルして挑戦", "btn btn-primary", () =>
-      start(shuffled(clone(state.source)))
-    );
-
-    content.replaceChildren(node("section", { className: "result-card" }, [
-      node("p", { className: "result-kicker", textContent: `${state.domain} RESULT` }),
-      node("div", { className: "result-score", textContent: `${percentage}%` }),
-      node("h2", { textContent: `${state.questions.length}問中 ${score.correct}問正解` }),
-      node("p", { textContent: resultMessage(percentage) }),
-      node("div", { className: "result-actions" }, [review, retry, shuffle])
-    ]));
-  }
-
-  function resultMessage(percentage) {
-    if (percentage >= 85) return "十分な理解度です。迷った問題の判断根拠を確認しましょう。";
-    if (percentage >= 70) return "合格圏を意識できる水準です。誤答を中心に復習しましょう。";
-    return "解説を確認し、同じセットへ再挑戦しましょう。";
-  }
-
-  function getStats() {
-    let answered = 0;
-    let correct = 0;
-    state.answers.forEach((answer, index) => {
-      if (answer !== null) {
-        answered += 1;
-        if (answer === state.questions[index].correctIndex) correct += 1;
+  function validateQuestions(data, file) {
+    if (!Array.isArray(data) || !data.length) throw new Error(`${file} に問題がありません。`);
+    const ids = new Set();
+    data.forEach((q, i) => {
+      if (!q.id || ids.has(q.id)) throw new Error(`${file}: 問題 ${i + 1} のIDが不正または重複しています。`);
+      ids.add(q.id);
+      if (!q.question || !Array.isArray(q.options) || q.options.length !== 4 || !Number.isInteger(q.correctIndex) || q.correctIndex < 0 || q.correctIndex > 3) {
+        throw new Error(`${file}: ${q.id} の問題形式が不正です。`);
       }
     });
-    return { answered, correct };
   }
 
-  function renderStatus(title, message) {
-    content.replaceChildren(node("div", { className: "loading-panel" }, [
-      node("span", { className: "spinner" }),
-      node("div", {}, [
-        node("strong", { textContent: title }),
-        node("p", { textContent: message })
-      ])
-    ]));
+  function shell(content) {
+    return `<div class="sscp-shell"><header class="sscp-header"><div class="sscp-header-row"><div class="sscp-brand">ISC² <span>SSCP</span> Practice</div><div>${state.setKey && SETS[state.setKey] ? escapeHtml(SETS[state.setKey].label) : 'Exam Preparation'}</div></div></header><main class="sscp-main">${content}</main></div>`;
   }
 
-  function renderError(error, domain) {
-    content.replaceChildren(node("section", { className: "status-panel error-panel" }, [
-      node("h2", { textContent: `${domain}の問題を読み込めませんでした` }),
-      node("p", { textContent: `${QUESTION_FILES[domain]} の配置と内容を確認してください。` }),
-      node("p", { className: "error-detail", textContent: error.message }),
-      makeButton("再読み込み", "btn btn-primary", () => loadDomain(domain))
-    ]));
+  function renderHome() {
+    const error = state.loadError ? `<div class="sscp-error"><strong>読み込みエラー</strong><br>${escapeHtml(state.loadError)}<br><small>Webサーバー経由で開き、JSONが questions/ に配置されているか確認してください。</small></div>` : '';
+    const cards = Object.entries(SETS).map(([key, s]) => `<button class="sscp-set-card" data-set="${key}"><span class="sscp-pill">${key === 'challenge' ? '30 QUESTIONS' : '100 QUESTIONS'}</span><h2>${escapeHtml(s.label)}</h2><p>${escapeHtml(s.subtitle)}</p><strong>開始する →</strong></button>`).join('');
+    root.innerHTML = shell(`${error}<section class="sscp-home-copy"><h1>SSCP Practice Exams</h1><p>知識の暗記だけでなく、BEST・FIRST・MOST・NEXTを判断する力を鍛えます。セットを選んで開始してください。</p></section><section class="sscp-set-grid">${cards}</section>`);
+    root.querySelectorAll('[data-set]').forEach(el => el.addEventListener('click', () => loadSet(el.dataset.set)));
   }
 
-  function makeButton(text, className, handler) {
-    const button = node("button", { className, type: "button", textContent: text });
-    button.addEventListener("click", handler);
-    return button;
+  function renderQuiz() {
+    const q = state.questions[state.index];
+    const selected = state.answers[state.index];
+    const submitted = state.submitted[state.index];
+    const letters = ['A','B','C','D'];
+    const options = q.options.map((option, i) => {
+      let cls = 'sscp-option';
+      if (selected === i) cls += ' selected';
+      if (submitted && i === q.correctIndex) cls += ' correct';
+      if (submitted && selected === i && i !== q.correctIndex) cls += ' incorrect';
+      return `<button class="${cls}" data-option="${i}" ${submitted ? 'disabled' : ''}><span class="sscp-letter">${letters[i]}</span><span>${escapeHtml(option)}</span></button>`;
+    }).join('');
+    const feedback = submitted ? feedbackHtml(q, selected) : '';
+    const answered = state.submitted.filter(Boolean).length;
+    const content = `
+      <div class="sscp-toolbar"><div class="sscp-progress-wrap"><div class="sscp-progress"><span style="width:${((state.index + 1) / state.questions.length) * 100}%"></span></div><div class="sscp-stat">問題 ${state.index + 1} / ${state.questions.length} ・ 解答済み ${answered}</div></div>${state.deadline ? '<div id="sscp-timer" class="sscp-timer">--:--</div>' : ''}</div>
+      <article class="sscp-card"><header class="sscp-question-head"><div class="sscp-meta"><span>${escapeHtml(q.id)}</span><span>${escapeHtml(q.domain)} · ${escapeHtml(DOMAIN_NAMES[q.domain] || '')}</span><span>${escapeHtml(q.objective || '')}</span></div><p class="sscp-question">${escapeHtml(q.question)}</p></header><div class="sscp-body"><div class="sscp-options">${options}</div>${feedback}<div class="sscp-actions"><div class="sscp-actions-left"><button class="sscp-btn sscp-btn-secondary" data-action="home">セット選択</button><button class="sscp-btn sscp-btn-flag ${state.flagged[state.index] ? 'active' : ''}" data-action="flag">${state.flagged[state.index] ? '★ 見直し対象' : '☆ 見直す'}</button></div><div class="sscp-actions-right"><button class="sscp-btn sscp-btn-secondary" data-action="prev" ${state.index === 0 ? 'disabled' : ''}>前へ</button>${submitted ? `<button class="sscp-btn sscp-btn-primary" data-action="next">${state.index === state.questions.length - 1 ? '結果を見る' : '次の問題へ'}</button>` : '<button class="sscp-btn sscp-btn-primary" data-action="submit" '+(selected === null ? 'disabled' : '')+'>解答を確定</button>'}</div></div></div></article>`;
+    root.innerHTML = shell(content);
+    bindQuizEvents(); updateTimer();
   }
 
-  function shuffled(items) {
-    for (let index = items.length - 1; index > 0; index -= 1) {
-      const target = Math.floor(Math.random() * (index + 1));
-      [items[index], items[target]] = [items[target], items[index]];
+  function feedbackHtml(q, selected) {
+    const correct = selected === q.correctIndex;
+    return `<section class="sscp-feedback ${correct ? 'ok' : 'bad'}"><h3>${correct ? '✓ 正解' : '✕ 不正解'} — 正解 ${String.fromCharCode(65 + q.correctIndex)}</h3><p>${escapeHtml(q.rationale || q.explanation || '')}</p>${q.hint ? `<p class="sscp-hint"><strong>試験ヒント：</strong>${escapeHtml(q.hint)}</p>` : ''}</section>`;
+  }
+
+  function bindQuizEvents() {
+    root.querySelectorAll('[data-option]').forEach(el => el.addEventListener('click', () => { state.answers[state.index] = Number(el.dataset.option); renderQuiz(); }));
+    root.querySelectorAll('[data-action]').forEach(el => el.addEventListener('click', () => {
+      const action = el.dataset.action;
+      if (action === 'home') { if (confirm('現在の解答を終了してセット選択へ戻りますか？')) { clearTimer(); state.mode = 'home'; renderHome(); } }
+      if (action === 'flag') { state.flagged[state.index] = !state.flagged[state.index]; renderQuiz(); }
+      if (action === 'prev') { state.index--; renderQuiz(); }
+      if (action === 'submit' && state.answers[state.index] !== null) { state.submitted[state.index] = true; renderQuiz(); }
+      if (action === 'next') { if (state.index < state.questions.length - 1) { state.index++; renderQuiz(); } else finishExam(); }
+    }));
+  }
+
+  function finishExam(force = false) {
+    if (!force) {
+      const unanswered = state.submitted.filter(v => !v).length;
+      if (unanswered && !confirm(`未確定の問題が ${unanswered} 問あります。結果を表示しますか？`)) return;
     }
-    return items;
+    clearTimer(); state.mode = 'result'; renderResult();
   }
 
-  function clone(value) {
-    return typeof structuredClone === "function"
-      ? structuredClone(value)
-      : JSON.parse(JSON.stringify(value));
+  function renderResult() {
+    const total = state.questions.length;
+    const correct = state.questions.reduce((n, q, i) => n + (state.submitted[i] && state.answers[i] === q.correctIndex ? 1 : 0), 0);
+    const rate = Math.round(correct / total * 100);
+    const domains = {};
+    state.questions.forEach((q, i) => { const d = domains[q.domain] ||= { total: 0, correct: 0 }; d.total++; if (state.submitted[i] && state.answers[i] === q.correctIndex) d.correct++; });
+    const domainHtml = Object.entries(domains).map(([key, d]) => `<div class="sscp-result-item"><span>${key}</span><strong>${Math.round(d.correct / d.total * 100)}%</strong><small>${d.correct} / ${d.total}</small></div>`).join('');
+    const rows = state.questions.map((q, i) => { const ok = state.submitted[i] && state.answers[i] === q.correctIndex; return `<div class="sscp-review-row ${ok ? 'ok' : 'bad'}" data-review="${i}"><strong>${escapeHtml(q.id)} ${ok ? '✓' : '✕'}</strong> ${escapeHtml(q.question)}</div>`; }).join('');
+    root.innerHTML = shell(`<section class="sscp-card sscp-result"><span class="sscp-pill">${escapeHtml(SETS[state.setKey].label)}</span><h1>${rate >= 70 ? 'よくできました' : '復習して再挑戦しましょう'}</h1><div class="sscp-score">${rate}<small>%</small></div><p>${correct} / ${total} 問正解</p><div class="sscp-result-grid">${domainHtml}</div><div class="sscp-result-actions"><button class="sscp-btn sscp-btn-primary" data-result="retry">もう一度挑戦</button><button class="sscp-btn sscp-btn-secondary" data-result="home">セット選択</button></div><div class="sscp-review-list"><h2>問題別レビュー</h2>${rows}</div></section>`);
+    root.querySelector('[data-result="retry"]').addEventListener('click', () => loadSet(state.setKey));
+    root.querySelector('[data-result="home"]').addEventListener('click', () => { state.setKey = null; state.mode = 'home'; renderHome(); });
+    root.querySelectorAll('[data-review]').forEach(el => el.addEventListener('click', () => { state.index = Number(el.dataset.review); state.mode = 'quiz'; renderQuiz(); }));
   }
 
-  function node(tag, properties = {}, children = []) {
-    const element = document.createElement(tag);
-    Object.entries(properties).forEach(([key, value]) => {
-      if (key === "className") element.className = value;
-      else if (key === "textContent") element.textContent = value;
-      else if (key === "style") element.setAttribute("style", value);
-      else if (key in element && !key.startsWith("aria-")) element[key] = value;
-      else element.setAttribute(key, value);
-    });
-    (Array.isArray(children) ? children : [children])
-      .filter(Boolean)
-      .forEach(child => element.append(child));
-    return element;
+  function updateTimer() {
+    if (!state.deadline) return;
+    const remaining = Math.max(0, state.deadline - Date.now());
+    const el = document.getElementById('sscp-timer');
+    if (el) {
+      const minutes = Math.floor(remaining / 60_000); const seconds = Math.floor((remaining % 60_000) / 1000);
+      el.textContent = `${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+      el.classList.toggle('warn', remaining <= 10 * 60_000);
+    }
+    if (remaining === 0 && state.mode === 'quiz') finishExam(true);
   }
+
+  function clearTimer() { if (state.timerId) window.clearInterval(state.timerId); state.timerId = null; }
+
+  injectFallbackStyles();
+  renderHome();
 })();
