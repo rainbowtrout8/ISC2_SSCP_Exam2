@@ -6,7 +6,8 @@
     D2: "questions/d2.json",
     D3: "questions/d3.json",
     D4: "questions/d4.json",
-    D5: "questions/d5.json"
+    D5: "questions/d5.json",
+    D6: "questions/d6.json"
   };
 
   const DOMAINS = {
