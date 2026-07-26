@@ -4,7 +4,8 @@
   const QUESTION_FILES = {
     D1: "questions/d1.json",
     D2: "questions/d2.json",
-    D3: "questions/d3.json"
+    D3: "questions/d3.json",
+    D4: "questions/d4.json"
   };
 
   const DOMAINS = {
